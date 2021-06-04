@@ -97,9 +97,9 @@
 #define Z_MIN_POS 0
 
 /**  Stepper  **/
-#define X_DRIVER_TYPE     DRV8825
-#define Y_DRIVER_TYPE     DRV8825
-#define Z_DRIVER_TYPE     DRV8825
+#define X_DRIVER_TYPE     TMC2208
+#define Y_DRIVER_TYPE     TMC2208
+#define Z_DRIVER_TYPE     TMC2208
 #define E0_DRIVER_TYPE    DRV8825
 #define E1_DRIVER_TYPE    DRV8825
 
@@ -111,9 +111,9 @@
   #define INVERT_E0_DIR   false
   #define INVERT_E1_DIR   true
 #else
-  #define INVERT_X_DIR    false
-  #define INVERT_Y_DIR    false
-  #define INVERT_Z_DIR    false
+  #define INVERT_X_DIR    true//false
+  #define INVERT_Y_DIR    true//false
+  #define INVERT_Z_DIR    true//false
 
   #define INVERT_E0_DIR   true
 #endif
@@ -148,7 +148,7 @@
 /**  Movement  **/
 #define S_CURVE_ACCELERATION
 #if BV_PRO_ABL24()
-  #define DEFAULT_AXIS_STEPS_PER_UNIT   { 100,  100, 503.937, 140 }
+  #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80,  80, 503.937, 140 }
 #else
   #define DEFAULT_AXIS_STEPS_PER_UNIT   { 100,  100, 503.937, 140 }
 #endif
