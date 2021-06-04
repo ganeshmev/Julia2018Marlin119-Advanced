@@ -1541,7 +1541,6 @@ bool Planner::_buffer_steps(const int32_t (&target)[XYZE]
   , float fr_mm_s, const uint8_t extruder, const float &millimeters
 ) {
 
-  
   // If we are cleaning, do not accept queuing of movements
   if (cleaning_buffer_counter) return false;
 
@@ -1560,8 +1559,6 @@ bool Planner::_buffer_steps(const int32_t (&target)[XYZE]
     //  Simply accept that as movement queued and done
     return true;
   }
-
-  
 
   // If this is the first added movement, reload the delay, otherwise, cancel it.
   if (block_buffer_head == block_buffer_tail) {

@@ -39,7 +39,7 @@
 
 
 /**  Control board  **/
-#define MOTHERBOARD   BOARD_MKS_GEN_L_V21//BOARD_MKS_GEN_L //BOARD_MKS_GEN_13 //BOARD_MKS_13 //BOARD_RAMPS_13_EFB
+#define MOTHERBOARD   BOARD_MKS_GEN_13 //BOARD_MKS_13 //BOARD_RAMPS_13_EFB
 #define BAUDRATE      115200
 
 /**  Filament  **/
@@ -125,7 +125,7 @@
 
 /**  Homing  **/
 #define X_HOME_DIR  -1
-#define Y_HOME_DIR   1//1
+#define Y_HOME_DIR   1
 #define Z_HOME_DIR   1
 
 #if BV_REG() || BV(JULIA_2018_RPI_E)
@@ -196,7 +196,7 @@
 #endif
 
 /**  Thermistor  **/
-#define TEMP_SENSOR_0       1//3
+#define TEMP_SENSOR_0       3
 #if BV_PRO_DUAL()
   #define TEMP_SENSOR_1     3
 #else
@@ -205,7 +205,7 @@
 #if BV(JULIA_2018_GLCD)
   #define TEMP_SENSOR_BED   0
 #else
-  #define TEMP_SENSOR_BED   1//3
+  #define TEMP_SENSOR_BED   3
 #endif
 
 /**  Thermal  **/

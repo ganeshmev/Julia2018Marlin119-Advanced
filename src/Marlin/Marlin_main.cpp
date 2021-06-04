@@ -2970,7 +2970,6 @@ void clean_up_after_endstop_or_probe_move() {
  */
 static void do_homing_move(const AxisEnum axis, const float distance, const float fr_mm_s=0) {
 
-  
   #if ENABLED(DEBUG_LEVELING_FEATURE)
     if (DEBUGGING(LEVELING)) {
       SERIAL_ECHOPAIR(">>> do_homing_move(", axis_codes[axis]);
@@ -3018,7 +3017,7 @@ static void do_homing_move(const AxisEnum axis, const float distance, const floa
 
   // Tell the planner the axis is at 0
   current_position[axis] = 0;
-  
+
   // Do the move, which is required to hit an endstop
   #if IS_SCARA
     SYNC_PLAN_POSITION_KINEMATIC();
@@ -3031,9 +3030,7 @@ static void do_homing_move(const AxisEnum axis, const float distance, const floa
     planner.buffer_line(current_position[X_AXIS], current_position[Y_AXIS], current_position[Z_AXIS], current_position[E_AXIS], fr_mm_s ? fr_mm_s : homing_feedrate(axis), active_extruder);
   #endif
 
-  
   planner.synchronize();
-  
 
   if (is_home_dir) {
 
@@ -3099,8 +3096,7 @@ static void homeaxis(const AxisEnum axis) {
   #if HOMING_Z_WITH_PROBE
     if (axis == Z_AXIS && DEPLOY_PROBE()) return;
   #endif
-  
-  
+
   // Set flags for X, Y, Z motor locking
   #if ENABLED(X_DUAL_ENDSTOPS) || ENABLED(Y_DUAL_ENDSTOPS) || ENABLED(Z_DUAL_ENDSTOPS)
     switch (axis) {
@@ -3127,11 +3123,9 @@ static void homeaxis(const AxisEnum axis) {
     // BLTOUCH needs to be deployed every time
     if (axis == Z_AXIS && set_bltouch_deployed(true)) return;
   #endif
-   
-  
+
   do_homing_move(axis, 1.5f * max_length(axis) * axis_home_dir);
-  
-   
+
   #if HOMING_Z_WITH_PROBE && ENABLED(BLTOUCH)
     // BLTOUCH needs to be stowed after trigger to rearm itself
     if (axis == Z_AXIS) set_bltouch_deployed(false);
@@ -3144,7 +3138,7 @@ static void homeaxis(const AxisEnum axis) {
     #endif
     home_bump_mm(axis)
   );
-   
+
   // If a second homing move is configured...
   if (bump) {
     // Move away from the endstop by the axis HOME_BUMP_MM
@@ -4137,11 +4131,9 @@ inline void gcode_G28(const bool always_home_all) {
     #endif
     return;
   }
-  //SERIAL_PROTOCOLLN("homing function entered");
 
   // Wait for planner moves to finish!
   planner.synchronize();
-  //SERIAL_PROTOCOLLN(" planner synchronised");
 
   // Cancel the active G29 session
   #if ENABLED(PROBE_MANUALLY)
@@ -4178,10 +4170,7 @@ inline void gcode_G28(const bool always_home_all) {
     extruder_duplication_enabled = false;
   #endif
 
-  SERIAL_PROTOCOLLN("probe move setup func entered");
   setup_for_endstop_or_probe_move();
-
-  SERIAL_PROTOCOLLN("debug leveling feature func");
   #if ENABLED(DEBUG_LEVELING_FEATURE)
     if (DEBUGGING(LEVELING)) SERIAL_ECHOLNPGM("> endstops.enable(true)");
   #endif
@@ -4199,7 +4188,6 @@ inline void gcode_G28(const bool always_home_all) {
                homeZ = always_home_all || parser.seen('Z'),
                home_all = (!homeX && !homeY && !homeZ) || (homeX && homeY && homeZ);
 
-    //SERIAL_PROTOCOLLN("destination from current set func");
     set_destination_from_current();
 
     #if Z_HOME_DIR > 0  // If homing away from BED do Z first
@@ -4207,8 +4195,6 @@ inline void gcode_G28(const bool always_home_all) {
       if (home_all || homeZ) homeaxis(Z_AXIS);
 
     #endif
-
-    //SERIAL_PROTOCOLLN("after dest from the current func");
 
     const float z_homing_height = (
       #if ENABLED(UNKNOWN_Z_NO_RAISE)
@@ -4248,8 +4234,6 @@ inline void gcode_G28(const bool always_home_all) {
 
     #endif
 
-
-  
     // Home X
     if (home_all || homeX
       #if ENABLED(CODEPENDENT_XY_HOMING) && DISABLED(HOME_Y_BEFORE_X)
@@ -4281,7 +4265,6 @@ inline void gcode_G28(const bool always_home_all) {
 
       #endif
     }
-
 
     // Home Y (after X)
     #if DISABLED(HOME_Y_BEFORE_X)
