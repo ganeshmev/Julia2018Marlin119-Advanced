@@ -6,7 +6,6 @@
 #ifndef _VARIANT_H
 #define _VARIANT_H
 
-#define VARIANT JULIA_2018_RPI
+#define VARIANT JULIA_2018_RPI_E
 
 #endif // _VARIANT_H
-
