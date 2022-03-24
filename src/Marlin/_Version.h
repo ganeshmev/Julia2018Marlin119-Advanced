@@ -8,7 +8,7 @@
 #define REQUIRED_CONFIGURATION_ADV_H_VERSION 010109
 
 #define PROTOCOL_VERSION "1.0"
-#define MACHINE_NAME "Julia Advance with TMC 2208 on MKS GenL V2.1, Not using UART- Top right 2 jumpers jumped horizontally, 1/16 micro stepping"
+#define MACHINE_NAME "Julia Advance with TMC 2208 on MKS GenL V2.1, Not using UART- Top right 2 jumpers jumped horizontally, 1/16 micro stepping, with RPi 4"
 #define DEFAULT_MACHINE_UUID "0108a599-3b95-4186-a636-069eb59879c0"
 
 #define BUILD_UNIX_DATETIME "1646032316"

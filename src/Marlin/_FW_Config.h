@@ -54,7 +54,7 @@
 #if BV_REG()
   #define X_BED_SIZE  200
   #define Y_BED_SIZE  200
-  #define Z_MAX_POS   220//210
+  #define Z_MAX_POS   225//220//210
 #elif BV(JULIA_2018_RPI_E)
   #define X_BED_SIZE  250
   #define Y_BED_SIZE  249 // since it was hitting, reduced from 250, very and revert back if needed 
